@@ -1,23 +1,31 @@
-# Laravel Django blog
+# Blog Automation Tests
 
-Blog cá nhân kết nối Laravel Frontend với Django API, tích hợp AI phản hồi bình luận.
+Automation test suite cho project Blog cá nhân (Laravel + Django).
 
 ## Tech Stack
+- Python + Playwright
+- pytest
 
-- Backend API: Django Rest Framework
-- Frontend: Laravel + Vuejs + Bootstrap
-- AI: Gemini, OpenRouter
-- Automation Test: Playwright (Python)
+## Test Coverage
 
-## Chạy test
+### UI Tests
+- Trang chủ load thành công
+- Trang chi tiết bài viết hiển thị
+- Click từ trang chủ sang chi tiết
+- Form bình luận hiển thị và điền được
 
-- bash
+### API Tests
+- GET /14/ trả về JSON đúng cấu trúc
 
-## Cài dependency
+## Chạy Test
 
+```bash
+# Cài dependency
 pip install pytest-playwright
 playwright install chromium
 
-# Chạy test
+# Chạy tất cả
+pytest test_blog.py -v
 
-pytest test_blog.py -v --headed --slowmo 1000
+# Chạy 1 test cụ thể
+pytest test_blog.py::test_homepage_load -v --headed
